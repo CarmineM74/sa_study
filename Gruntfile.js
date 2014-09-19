@@ -123,6 +123,12 @@ module.exports = function (grunt) {
 
     // Empties folders to start fresh
     clean: {
+      smartadmin: {
+        files: [{
+          dot: true,
+          src: ['<%= yeoman.app %>/scripts/js']
+        }]
+      },
       dist: {
         files: [{
           dot: true,
@@ -243,7 +249,7 @@ module.exports = function (grunt) {
         flow: {
           html: {
             steps: {
-              js: ['concat', 'uglifyjs'],
+              js: ['concat'], // 'uglifyjs'],
               css: ['cssmin']
             },
             post: {}
@@ -388,19 +394,25 @@ module.exports = function (grunt) {
           expand: true,
           dot: true,
           cwd: './smartadmin',
+          dest: '<%= yeoman.app %>/scripts',
+          src: [
+            'js/**/*',
+            '!js/demo.js',
+            '!js/langs{,*/}*',
+            '!js/libs/{,**/}*', // Skipped because we manage angular dependency via bower
+            '!js/ng/{,**/}*' // Skipped because it has been modified and moved to sa_directives.js 
+          ]
+        }]
+      },
+      smartadmin_dist: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: './smartadmin',
           dest: '<%= yeoman.dist %>',
           src: [
             'img/**/*',
             'css/{,*/}*.css',
-            'js/**/*',
-            '!js/libs/angular/angular-animate.js', // Skipped because we manage angular dependency via bower
-            '!js/libs/angular/angular-route.js', // Skipped because we manage angular dependency via bower
-            '!js/libs/angular/angular.js', // Skipped because we manage angular dependency via bower
-            '!js/langs{,*/}*',
-            '!js/demo.js',
-            '!js/ng/ng.app.js',
-            '!js/ng/ng.controllers.js',
-            '!js/ng/ng.directives.js', // Skipped because it has been modified and moved to sa_directives.js 
             'sound/{,*/}*',
             'fonts/*'
           ]
@@ -476,6 +488,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'clean:smartadmin',
+    'copy:smartadmin',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -483,10 +497,10 @@ module.exports = function (grunt) {
     'concat',
     'ngmin',
     'copy:dist',
-    'copy:smartadmin',
+    'copy:smartadmin_dist',
     'cdnify',
     'cssmin',
-    'uglify',
+    //'uglify',
     'filerev',
     'usemin',
     'htmlmin'

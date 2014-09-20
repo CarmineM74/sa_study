@@ -49,21 +49,24 @@ angular
       .state('home', {
         url: '/'
         templateUrl: 'views/main.html'
-        resolve: {
-          auth: ($auth) ->
-            console.log('Checking for authorization before heading home ...')
-            $auth.validateUser()
-              .then(-> console.log('Sir, you have permission granted.'))
-        }
       })
   )
   .run((settings) ->
 	  settings.currentLang = settings.languages[0] # Default language
   )
-  .run(($rootScope,$state) ->
+  .run(($rootScope,$state,$auth) ->
     console.log('Setting up auth:validation-error interception ...')
-    $rootScope.$on('event:unauthorized', ->
+    $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
+      console.log('Changing state from: ' + JSON.stringify(fromState) + ' to: ' + JSON.stringify(toState))
+      if (toState.name == 'visitor')
+        return
+      $auth.validateUser()
+        .catch( ->
+          $state.go('visitor')
+        )
+    )
+    $rootScope.$on('auth:validation-error', ->
       console.log('Heading to login page!')
-      $state.go('login')
+      $state.go('visitor')
     )
   )

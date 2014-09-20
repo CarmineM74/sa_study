@@ -123,6 +123,7 @@ module.exports = function (grunt) {
 
     // Empties folders to start fresh
     clean: {
+      // CarmineM74 - Cleans copied untouched smartadmin js files
       smartadmin: {
         files: [{
           dot: true,
@@ -160,6 +161,7 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app
     wiredep: {
       options: {
+        // CarmineM74 - Required, otherwise grunt build complains. grunt v0.4.5, node v0.10.32
         //cwd: '<%= yeoman.app %>'
       },
       app: {
@@ -260,7 +262,7 @@ module.exports = function (grunt) {
 
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.dist %>/**/*.html'], // tweaked to include htmls files in subdirectories
+      html: ['<%= yeoman.dist %>/**/*.html'], // CarmineM74 - tweaked to include html files in subdirectories
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
       options: {
         assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images']
@@ -389,6 +391,9 @@ module.exports = function (grunt) {
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
       },
+      // CarmineM74 - Customizations to import SmartAdmin features
+      //              Js scripts are copied under app/scripts otherwise we ran
+      //              into troubles with concatenation and later minification
       smartadmin: {
         files: [{
           expand: true,
@@ -404,6 +409,8 @@ module.exports = function (grunt) {
           ]
         }]
       },
+      // CarmineM74 - These are untouched assets from SmartAdmin that are needed and copied
+      //              directly into dist folder.
       smartadmin_dist: {
         files: [{
           expand: true,
@@ -417,7 +424,8 @@ module.exports = function (grunt) {
             'fonts/*'
           ]
         },
-        // Personalized items from SmartAdmin
+        // CarmineM75 - Language translations have been customized and thus moved 
+        //              into app folder. They need to be copied into dist folder.
         {
           expand: true,
           dot: true,

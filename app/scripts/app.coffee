@@ -2,13 +2,13 @@
 angular
   .module('saStudyApp', [
     'ui.bootstrap',
-    #'plunker',
     #'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngSanitize',
     'ngTouch',
     'ui.router',
+    'ng-token-auth',
   	'app.main',
   	'app.navigation',
   	'app.localize',
@@ -36,14 +36,34 @@ angular
 		}
 		return settings
 	)
-  .config(($stateProvider,$urlRouterProvider) ->
+  .config(($stateProvider,$urlRouterProvider,$authProvider) ->
+    $authProvider.configure({
+      apiUrl: '/api'
+    })
     $urlRouterProvider.otherwise('/')
     $stateProvider
+      .state('visitor', {
+        url: '/login'
+        templateUrl: 'views/login.html'
+      })
       .state('home', {
         url: '/'
         templateUrl: 'views/main.html'
+        resolve: {
+          auth: ($auth) ->
+            console.log('Checking for authorization before heading home ...')
+            $auth.validateUser()
+              .then(-> console.log('Sir, you have permission granted.'))
+        }
       })
   )
-  .run(($rootScope,settings) ->
-	  settings.currentLang = settings.languages[0]; # Default language
+  .run((settings) ->
+	  settings.currentLang = settings.languages[0] # Default language
+  )
+  .run(($rootScope,$state) ->
+    console.log('Setting up auth:validation-error interception ...')
+    $rootScope.$on('event:unauthorized', ->
+      console.log('Heading to login page!')
+      $state.go('login')
+    )
   )

@@ -66,21 +66,56 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
+        hostname: '0.0.0.0',
         livereload: 35729
       },
+      proxies: [{
+        context: '/api',
+        host: 'localhost',
+        port: 3000
+      }],
       livereload: {
         options: {
           open: true,
-          middleware: function (connect) {
-            return [
+          middleware: function (connect,opts) {
+            if (!Array.isArray(opts.base)) {
+              opts.base = [opts.base];
+            }
+            var middlewares = [
+              require('grunt-connect-proxy/lib/utils').proxyRequest,
               connect.static('.tmp'),
               connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              ),
+                  '/bower_components',
+                  connect.static('./bower_components')
+                  ),
+              connect().use(
+                  '/css',
+                  connect.static('./smartadmin/css')
+                  ),
+              connect().use(
+                  '/app/scripts/js',
+                  connect.static('./app/scripts/js')
+                  ),
+              connect().use(
+                  '/img',
+                  connect.static('./dist/img')
+                  ),
+              connect().use(
+                  '/js/langs',
+                  connect.static('./dist/js/langs')
+                  ),
+              connect().use(
+                  '/fonts',
+                  connect.static('./dist/fonts')
+                  ),
               connect.static(appConfig.app)
             ];
+
+            // Make directory browse-able
+            var directory = opts.directory || opts.base[opts.base.length - 1];
+            middlewares.push(connect.directory(directory));
+
+            return middlewares;
           }
         }
       },
@@ -424,7 +459,7 @@ module.exports = function (grunt) {
       },
       // CarmineM74 - These are untouched assets from SmartAdmin that are needed and copied
       //              directly into dist folder.
-      smartadmin_dist: {
+      smartadminDist: {
         files: [{
           expand: true,
           dot: true,
@@ -518,7 +553,7 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate', // CarmineM74 - Replaces ngmin
     'copy:dist',
-    'copy:smartadmin_dist',
+    'copy:smartadminDist',
     'cdnify',
     'cssmin',
     'uglify',

@@ -1,0 +1,168 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@2.0.0
+3 info using node@v0.10.32
+4 verbose node symlink /usr/local/bin/node
+5 warn package.json sastudy@0.0.0 No description
+6 warn package.json sastudy@0.0.0 No repository field.
+7 warn package.json sastudy@0.0.0 No README data
+8 verbose readDependencies using package.json deps
+9 verbose install where, deps [ '/Users/carminem/Sviluppo/angular/sa_study',
+9 verbose install   [ 'coffee-script',
+9 verbose install     'grunt',
+9 verbose install     'grunt-autoprefixer',
+9 verbose install     'grunt-concurrent',
+9 verbose install     'grunt-contrib-clean',
+9 verbose install     'grunt-contrib-coffee',
+9 verbose install     'grunt-contrib-compass',
+9 verbose install     'grunt-contrib-concat',
+9 verbose install     'grunt-contrib-connect',
+9 verbose install     'grunt-contrib-copy',
+9 verbose install     'grunt-contrib-cssmin',
+9 verbose install     'grunt-contrib-htmlmin',
+9 verbose install     'grunt-contrib-imagemin',
+9 verbose install     'grunt-contrib-jshint',
+9 verbose install     'grunt-contrib-uglify',
+9 verbose install     'grunt-contrib-watch',
+9 verbose install     'grunt-filerev',
+9 verbose install     'grunt-google-cdn',
+9 verbose install     'grunt-karma',
+9 verbose install     'grunt-newer',
+9 verbose install     'grunt-ng-annotate',
+9 verbose install     'grunt-svgmin',
+9 verbose install     'grunt-usemin',
+9 verbose install     'grunt-wiredep',
+9 verbose install     'jshint-stylish',
+9 verbose install     'karma',
+9 verbose install     'karma-coffee-preprocessor',
+9 verbose install     'karma-jasmine',
+9 verbose install     'karma-phantomjs-launcher',
+9 verbose install     'load-grunt-tasks',
+9 verbose install     'time-grunt' ] ]
+10 info preinstall sastudy@0.0.0
+11 verbose readDependencies using package.json deps
+12 verbose already installed skipping grunt-contrib-compass@^0.7.2 /Users/carminem/Sviluppo/angular/sa_study
+13 verbose already installed skipping grunt-contrib-concat@^0.4.0 /Users/carminem/Sviluppo/angular/sa_study
+14 verbose already installed skipping grunt-contrib-connect@^0.7.1 /Users/carminem/Sviluppo/angular/sa_study
+15 verbose already installed skipping grunt-contrib-copy@^0.5.0 /Users/carminem/Sviluppo/angular/sa_study
+16 verbose already installed skipping grunt-contrib-cssmin@^0.9.0 /Users/carminem/Sviluppo/angular/sa_study
+17 verbose already installed skipping grunt-contrib-htmlmin@^0.3.0 /Users/carminem/Sviluppo/angular/sa_study
+18 verbose already installed skipping grunt-contrib-imagemin@^0.7.0 /Users/carminem/Sviluppo/angular/sa_study
+19 verbose already installed skipping grunt-contrib-jshint@^0.10.0 /Users/carminem/Sviluppo/angular/sa_study
+20 verbose already installed skipping grunt-contrib-uglify@^0.4.0 /Users/carminem/Sviluppo/angular/sa_study
+21 verbose already installed skipping grunt-contrib-watch@^0.6.1 /Users/carminem/Sviluppo/angular/sa_study
+22 verbose already installed skipping grunt-filerev@^0.2.1 /Users/carminem/Sviluppo/angular/sa_study
+23 verbose already installed skipping grunt-google-cdn@^0.4.0 /Users/carminem/Sviluppo/angular/sa_study
+24 verbose already installed skipping grunt-karma@^0.9.0 /Users/carminem/Sviluppo/angular/sa_study
+25 verbose already installed skipping grunt-newer@^0.7.0 /Users/carminem/Sviluppo/angular/sa_study
+26 verbose cache add [ 'grunt-ng-annotate@^0.10.1', null ]
+27 verbose cache add spec="grunt-ng-annotate@^0.10.1" args=["grunt-ng-annotate@^0.10.1",null]
+28 verbose parsed spec { raw: 'grunt-ng-annotate@^0.10.1',
+28 verbose parsed spec   scope: null,
+28 verbose parsed spec   name: 'grunt-ng-annotate',
+28 verbose parsed spec   rawSpec: '^0.10.1',
+28 verbose parsed spec   spec: '>=0.10.1 <0.11.0',
+28 verbose parsed spec   type: 'range' }
+29 verbose already installed skipping grunt-svgmin@^0.4.0 /Users/carminem/Sviluppo/angular/sa_study
+30 verbose parsed spec { raw: 'grunt-ng-annotate@^0.10.1',
+30 verbose parsed spec   scope: null,
+30 verbose parsed spec   name: 'grunt-ng-annotate',
+30 verbose parsed spec   rawSpec: '^0.10.1',
+30 verbose parsed spec   spec: '>=0.10.1 <0.11.0',
+30 verbose parsed spec   type: 'range' }
+31 verbose addNamed [ 'grunt-ng-annotate', '>=0.10.1 <0.11.0' ]
+32 verbose addNamed [ null, '>=0.10.1 <0.11.0' ]
+33 verbose already installed skipping grunt-usemin@^2.1.1 /Users/carminem/Sviluppo/angular/sa_study
+34 silly lockFile 424f6e36-grunt-ng-annotate-0-10-1-0-11-0 grunt-ng-annotate@>=0.10.1 <0.11.0
+35 verbose lock grunt-ng-annotate@>=0.10.1 <0.11.0 /Users/carminem/.npm/424f6e36-grunt-ng-annotate-0-10-1-0-11-0.lock
+36 verbose already installed skipping grunt-wiredep@^1.7.0 /Users/carminem/Sviluppo/angular/sa_study
+37 verbose already installed skipping jshint-stylish@^0.2.0 /Users/carminem/Sviluppo/angular/sa_study
+38 silly addNameRange { name: 'grunt-ng-annotate',
+38 silly addNameRange   range: '>=0.10.1 <0.11.0',
+38 silly addNameRange   hasData: false }
+39 verbose mapToRegistry name grunt-ng-annotate
+40 verbose mapToRegistry uri https://registry.npmjs.org/grunt-ng-annotate
+41 verbose already installed skipping karma@^0.12.23 /Users/carminem/Sviluppo/angular/sa_study
+42 verbose already installed skipping karma-coffee-preprocessor@^0.2.1 /Users/carminem/Sviluppo/angular/sa_study
+43 verbose already installed skipping karma-jasmine@^0.1.5 /Users/carminem/Sviluppo/angular/sa_study
+44 verbose already installed skipping karma-phantomjs-launcher@^0.1.4 /Users/carminem/Sviluppo/angular/sa_study
+45 verbose request on initialization, where is /grunt-ng-annotate
+46 verbose request after pass 1, where is /grunt-ng-annotate
+47 verbose request url raw /grunt-ng-annotate
+48 verbose request resolving registry [ 'https://registry.npmjs.org/', './grunt-ng-annotate' ]
+49 verbose request after pass 2, where is https://registry.npmjs.org/grunt-ng-annotate
+50 verbose request no auth needed
+51 info attempt registry request try #1 at 11:44:46
+52 verbose request id 019a944b30d8a263
+53 verbose etag "292NLEO3QIWN2SR1NW8LVKEXS"
+54 http request GET https://registry.npmjs.org/grunt-ng-annotate
+55 verbose already installed skipping load-grunt-tasks@^0.4.0 /Users/carminem/Sviluppo/angular/sa_study
+56 verbose already installed skipping time-grunt@^0.3.1 /Users/carminem/Sviluppo/angular/sa_study
+57 verbose already installed skipping coffee-script@^1.8.0 /Users/carminem/Sviluppo/angular/sa_study
+58 verbose already installed skipping grunt@^0.4.1 /Users/carminem/Sviluppo/angular/sa_study
+59 verbose already installed skipping grunt-autoprefixer@^0.7.3 /Users/carminem/Sviluppo/angular/sa_study
+60 verbose already installed skipping grunt-concurrent@^0.5.0 /Users/carminem/Sviluppo/angular/sa_study
+61 verbose already installed skipping grunt-contrib-clean@^0.5.0 /Users/carminem/Sviluppo/angular/sa_study
+62 verbose already installed skipping grunt-contrib-coffee@^0.10.1 /Users/carminem/Sviluppo/angular/sa_study
+63 http 304 https://registry.npmjs.org/grunt-ng-annotate
+64 silly registry.get cb [ 304,
+64 silly registry.get   { date: 'Sat, 20 Sep 2014 09:44:46 GMT',
+64 silly registry.get     server: 'Apache',
+64 silly registry.get     via: '1.1 varnish',
+64 silly registry.get     'last-modified': 'Sat, 20 Sep 2014 09:44:46 GMT',
+64 silly registry.get     'cache-control': 'max-age=60',
+64 silly registry.get     etag: '"292NLEO3QIWN2SR1NW8LVKEXS"',
+64 silly registry.get     'x-served-by': 'cache-lcy1135-LCY',
+64 silly registry.get     'x-cache': 'HIT',
+64 silly registry.get     'x-cache-hits': '1',
+64 silly registry.get     'x-timer': 'S1411206286.440590,VS0,VE351',
+64 silly registry.get     vary: 'Accept',
+64 silly registry.get     'content-length': '0',
+64 silly registry.get     'keep-alive': 'timeout=10, max=50',
+64 silly registry.get     connection: 'Keep-Alive' } ]
+65 verbose etag https://registry.npmjs.org/grunt-ng-annotate from cache
+66 silly addNameRange number 2 { name: 'grunt-ng-annotate',
+66 silly addNameRange   range: '>=0.10.1 <0.11.0',
+66 silly addNameRange   hasData: true }
+67 silly addNameRange versions [ 'grunt-ng-annotate',
+67 silly addNameRange   [ '0.0.1',
+67 silly addNameRange     '0.0.2',
+67 silly addNameRange     '0.0.4',
+67 silly addNameRange     '0.0.5',
+67 silly addNameRange     '0.0.6',
+67 silly addNameRange     '0.0.7',
+67 silly addNameRange     '0.0.8',
+67 silly addNameRange     '0.1.0',
+67 silly addNameRange     '0.2.0',
+67 silly addNameRange     '0.2.1',
+67 silly addNameRange     '0.2.2',
+67 silly addNameRange     '0.2.3',
+67 silly addNameRange     '0.3.0',
+67 silly addNameRange     '0.3.1',
+67 silly addNameRange     '0.3.2',
+67 silly addNameRange     '0.4.0' ] ]
+68 silly lockFile 424f6e36-grunt-ng-annotate-0-10-1-0-11-0 grunt-ng-annotate@>=0.10.1 <0.11.0
+69 silly lockFile 424f6e36-grunt-ng-annotate-0-10-1-0-11-0 grunt-ng-annotate@>=0.10.1 <0.11.0
+70 verbose stack Error: No compatible version found: grunt-ng-annotate@'>=0.10.1 <0.11.0'
+70 verbose stack Valid install targets:
+70 verbose stack ["0.0.1","0.0.2","0.0.4","0.0.5","0.0.6","0.0.7","0.0.8","0.1.0","0.2.0","0.2.1","0.2.2","0.2.3","0.3.0","0.3.1","0.3.2","0.4.0"]
+70 verbose stack
+70 verbose stack     at installTargetsError (/usr/local/lib/node_modules/npm/lib/cache/add-named.js:258:12)
+70 verbose stack     at next (/usr/local/lib/node_modules/npm/lib/cache/add-named.js:237:17)
+70 verbose stack     at setData (/usr/local/lib/node_modules/npm/lib/cache/add-named.js:214:5)
+70 verbose stack     at saved (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/get.js:167:7)
+70 verbose stack     at Object.oncomplete (fs.js:107:15)
+71 verbose cwd /Users/carminem/Sviluppo/angular/sa_study
+72 error Darwin 13.4.0
+73 error argv "node" "/usr/local/bin/npm" "install"
+74 error node v0.10.32
+75 error npm  v2.0.0
+76 error code ETARGET
+77 error notarget No compatible version found: grunt-ng-annotate@'>=0.10.1 <0.11.0'
+77 error notarget Valid install targets:
+77 error notarget ["0.0.1","0.0.2","0.0.4","0.0.5","0.0.6","0.0.7","0.0.8","0.1.0","0.2.0","0.2.1","0.2.2","0.2.3","0.3.0","0.3.1","0.3.2","0.4.0"]
+77 error notarget
+77 error notarget This is most likely not a problem with npm itself.
+77 error notarget In most cases you or one of your dependencies are requesting
+77 error notarget a package version that doesn't exist.
+78 verbose exit [ 1, true ]

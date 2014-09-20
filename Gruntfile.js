@@ -262,6 +262,8 @@ module.exports = function (grunt) {
 
     // CarmineM74 - mangle set to false in order to overcome the "undefined aProvider"
     //              Suggestion came from: http://stackoverflow.com/questions/17238759/angular-module-minification-bug
+    //              Even switching to ngAnnotate didn't fix the "undefined aProvider" issue. Thus we are forced
+    //              to keep this option on.
     uglify: {
       options: { 
         mangle: false
@@ -349,11 +351,9 @@ module.exports = function (grunt) {
       }
     },
 
-    // ngmin tries to make the code safe for minification automatically by
-    // using the Angular long form for dependency injection. It doesn't work on
-    // things like resolve or inject so those have to be done manually.
-    ngmin: {
-      dist: {
+    // CarmineM74 - ngAnnotate replaces ngmin which is deprecated.
+    ngAnnotate: {
+      app: {
         files: [{
           expand: true,
           cwd: '.tmp/concat/scripts',
@@ -516,7 +516,7 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'autoprefixer',
     'concat',
-    'ngmin',
+    'ngAnnotate', // CarmineM74 - Replaces ngmin
     'copy:dist',
     'copy:smartadmin_dist',
     'cdnify',

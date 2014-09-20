@@ -260,6 +260,14 @@ module.exports = function (grunt) {
       }
     },
 
+    // CarmineM74 - mangle set to false in order to overcome the "undefined aProvider"
+    //              Suggestion came from: http://stackoverflow.com/questions/17238759/angular-module-minification-bug
+    uglify: {
+      options: { 
+        mangle: false
+      }
+    },
+
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
       html: ['<%= yeoman.dist %>/**/*.html'], // CarmineM74 - tweaked to include html files in subdirectories

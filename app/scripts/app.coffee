@@ -49,6 +49,9 @@ angular
       .state('home', {
         url: '/'
         templateUrl: 'views/main.html'
+        data: {
+          privileges: ['loggedIn']
+        }
       })
   )
   .run((settings) ->

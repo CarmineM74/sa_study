@@ -101,6 +101,10 @@ module.exports = function (grunt) {
                   connect.static('./dist/img')
                   ),
               connect().use(
+                  '/sound',
+                  connect.static('./dist/sound')
+                  ),
+              connect().use(
                   '/js/langs',
                   connect.static('./dist/js/langs')
                   ),

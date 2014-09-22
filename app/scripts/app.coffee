@@ -50,7 +50,8 @@ angular
         url: '/'
         templateUrl: 'views/main.html'
         data: {
-          privileges: ['loggedIn']
+          privileges: ['loggedIn']  # Upon stateChangeStart we can leverage an PermissionService passing this array
+                                    # in order to check for current user's privileges before transitioning to requested state.
         }
       })
   )
@@ -58,14 +59,20 @@ angular
 	  settings.currentLang = settings.languages[0] # Default language
   )
   .run(($rootScope,$state,$auth) ->
-    console.log('Setting up auth:validation-error interception ...')
     $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
       console.log('Changing state from: ' + JSON.stringify(fromState) + ' to: ' + JSON.stringify(toState))
+      # This is a workaround to avoid infinite loop
+      # A Better solution involves a PermissionService/AuthService
+      #  - If the toState requires no privilieges, then return
+      #  - If the toState requires some privileges check if current user has them and proceed accordingly
+      #  The call to the service should return a promise.
+      #  Idea confirmed from: https://medium.com/@mattlanham/authentication-with-angularjs-4e927af3a15f
       if (toState.name == 'visitor')
         return
       $auth.validateUser()
         .catch( ->
           $state.go('visitor')
+          event.preventDefault() # Prevents transition from happening
         )
     )
     $rootScope.$on('auth:validation-error', ->

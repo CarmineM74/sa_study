@@ -3,6 +3,7 @@ angular
   .module('saStudyApp', [
     'ui.bootstrap',
     #'ngAnimate',
+    'rails',
     'ngCookies',
     'ngResource',
     'ngSanitize',
@@ -14,12 +15,14 @@ angular
   	'app.localize',
   	'app.activity',
   	'app.smartui',
+    'saStudyApp.resources',
     'saStudyApp.services',
     'saStudyApp.directives',
     'saStudyApp.controllers'
   ])
 	.factory('settings', ($rootScope) ->
 		settings = {
+      defaultUnauthorizedState: 'visitor.login',
 			languages: [
 				{
 					language: 'Italiano',
@@ -33,7 +36,7 @@ angular
 					langCode: 'en',
 					flagCode: 'us'
 				}
-			],
+			]
 		}
 		return settings
 	)
@@ -50,12 +53,13 @@ angular
       .state('visitor.login', {
         url: '/login'
         templateUrl: 'views/login.html'
+        controller: 'LoginSignupController as ctrl'
       })
       .state('member', {
         abstract: true
         templateUrl: 'views/main.html'
         resolve: {
-          user: (AuthorizationService)->
+          user: (AuthorizationService) ->
             console.log('Validating user in abstract state')
             AuthorizationService.validateUser(['loggedIn'])
         }

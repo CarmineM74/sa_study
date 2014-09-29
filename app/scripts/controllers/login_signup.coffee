@@ -14,6 +14,7 @@ angular.module('saStudyApp.controllers')
         @AuthorizationService.login(@login)
           .then((user) =>
             @user = user
+            @login = {}
           )
 
   )

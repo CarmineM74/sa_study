@@ -72,4 +72,8 @@ angular
   .run((settings) ->
 	  settings.currentLang = settings.languages[0] # Default language
   )
+  .run(($rootScope, $state) ->
+    $rootScope.$on('user:set', -> $state.go('member.home'))
+    $rootScope.$on('user:unset', -> $state.go('visitor.login'))
+  )
 

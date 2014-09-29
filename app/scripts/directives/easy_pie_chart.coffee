@@ -28,6 +28,12 @@ angular.module('saStudyApp.directives')
       angular.extends opts, angular.fromJson(attrs.opts) if attrs.opts
       $(elem).easyPieChart(opts)
 
+      render = () ->
+        angular.extends opts, angular.fromJson(attrs.opts) if attrs.opts
+        model = ngModel.$viewValue
+#        console.log('Rendering: ' + model + ' opts: ' + JSON.stringify(opts))
+        $(elem).data('easyPieChart').update(parseInt(model))
+
       scope.$watch attrs.ngModel, ((value) ->
 #        console.log("ngModel changed:" + value)
         render()
@@ -37,12 +43,6 @@ angular.module('saStudyApp.directives')
 #        console.log(" opts changed:" + value)
         render()
       ),true
-
-      render = () ->
-        angular.extends opts, angular.fromJson(attrs.opts) if attrs.opts
-        model = ngModel.$viewValue
-#        console.log('Rendering: ' + model + ' opts: ' + JSON.stringify(opts))
-        $(elem).data('easyPieChart').update(parseInt(model))
 
 
 

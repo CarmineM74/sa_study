@@ -14,15 +14,8 @@ angular.module('saStudyApp.directives')
       opts.barSpacing = attrs.barSpacing || '2px'
       opts.zeroAxis = attrs.zeroAxis || 'false'
 
-      scope.$watch attrs.ngModel, ((value) ->
-        render()
-      ),true
-
-      scope.$watch attrs.opts, ((value) ->
-        render()
-      ), true
-
       render = () ->
+        console.log('Rendering ...')
         angular.extends opts, angular.fromJson(attrs.opts) if attrs.opts
 
         model = ngModel.$viewValue
@@ -36,3 +29,15 @@ angular.module('saStudyApp.directives')
             data = []
 
         $(elem).sparkline(data,opts)
+
+      scope.$watch attrs.ngModel, ((value) ->
+        console.log('Watching ngModel: ' + value)
+        render()
+        console.log('After RENDER')
+      ),true
+
+      scope.$watch attrs.opts, ((value) ->
+        console.log('Watching attrs: ' + value)
+        render()
+      ), true
+

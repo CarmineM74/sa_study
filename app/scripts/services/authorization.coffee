@@ -13,7 +13,11 @@ angular.module('saStudyApp.services')
         console.log('[setCurrentUser] auth_headers: ' + JSON.stringify(@$cookieStore.get('auth_headers')))
         @User.findById(id).then((user) =>
           @_user = user
-          @_user.auth_header = @$cookieStore.get('auth_headers')
+          @_user.auth_headers = @$cookieStore.get('auth_headers')
+          expiry = parseInt(@_user.auth_headers.expiry,10)*1000
+          expireAt = new Date()
+          expireAt.setTime(expiry)
+          console.log('[setCurrentUser]: Session expires at: ' + expireAt.toString())
           @$rootScope.$broadcast("user:set", @_user)
         )
 
@@ -27,7 +31,8 @@ angular.module('saStudyApp.services')
       currentUser: ->
         d = @$q.defer()
 
-        @$auth.validateUser().then((x) =>
+        @$auth.validateUser().then((validatedUser) =>
+          console.log('[validateUser]: ' + JSON.stringify(validatedUser))
           d.resolve @_user
         ).catch((e) =>
           console.log("No valid authenticated user: " + JSON.stringify(e))

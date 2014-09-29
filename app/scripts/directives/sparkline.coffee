@@ -15,7 +15,6 @@ angular.module('saStudyApp.directives')
       opts.zeroAxis = attrs.zeroAxis || 'false'
 
       render = () ->
-        console.log('Rendering ...')
         angular.extends opts, angular.fromJson(attrs.opts) if attrs.opts
 
         model = ngModel.$viewValue
@@ -31,13 +30,10 @@ angular.module('saStudyApp.directives')
         $(elem).sparkline(data,opts)
 
       scope.$watch attrs.ngModel, ((value) ->
-        console.log('Watching ngModel: ' + value)
         render()
-        console.log('After RENDER')
       ),true
 
       scope.$watch attrs.opts, ((value) ->
-        console.log('Watching attrs: ' + value)
         render()
       ), true
 

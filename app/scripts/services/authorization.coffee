@@ -7,6 +7,16 @@ angular.module('saStudyApp.services')
 
       _user: null
 
+      getExpiry: ->
+        if @_user
+          console.log('[getExpiry] Auth headers: ' + JSON.stringify(@_user.auth_headers))
+          expiry = parseInt(@_user.auth_headers.expiry,10)*1000
+          expireAt = new Date()
+          expireAt.setTime(expiry)
+          console.log('[getExpiry]: Session expires at: ' + expireAt.toString())
+        else
+          console.log('[getExpiry]: NO USER DEFINED!')
+
       setCurrentUser: (id) ->
         id = id.id
         @$cookieStore.put('user',id)
@@ -14,10 +24,7 @@ angular.module('saStudyApp.services')
         @User.findById(id).then((user) =>
           @_user = user
           @_user.auth_headers = @$cookieStore.get('auth_headers')
-          expiry = parseInt(@_user.auth_headers.expiry,10)*1000
-          expireAt = new Date()
-          expireAt.setTime(expiry)
-          console.log('[setCurrentUser]: Session expires at: ' + expireAt.toString())
+          @getExpiry()
           @$rootScope.$broadcast("user:set", @_user)
         )
 
@@ -33,6 +40,7 @@ angular.module('saStudyApp.services')
 
         @$auth.validateUser().then((validatedUser) =>
           console.log('[validateUser]: ' + JSON.stringify(validatedUser))
+          @setCurrentUser(validatedUser.id)
           d.resolve @_user
         ).catch((e) =>
           console.log("No valid authenticated user: " + JSON.stringify(e))
@@ -70,9 +78,15 @@ angular.module('saStudyApp.services')
       logout: ->
         d = @$q.defer()
 
-        @$auth.signOut()
-        @unsetCurrentUser()
-        d.resolve()
+        @$auth.signOut().then( (resp) =>
+          console.log('[signOut]: ' + JSON.stringify(resp))
+          @unsetCurrentUser()
+          d.resolve()
+        ).catch( (resp) =>
+          console.log('[signOut] Failed: ' + JSON.stringify(resp))
+          @unsetCurrentUser()
+          d.reject resp
+        )
 
         d.promise
 

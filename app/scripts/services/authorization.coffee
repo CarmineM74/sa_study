@@ -14,8 +14,10 @@ angular.module('saStudyApp.services')
           expireAt = new Date()
           expireAt.setTime(expiry)
           console.log('[getExpiry]: Session expires at: ' + expireAt.toString())
+          expireAt
         else
           console.log('[getExpiry]: NO USER DEFINED!')
+          new Date()
 
       setCurrentUser: (id) ->
         id = id.id
